@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 40px; }
+        th, td { border: 1px solid #ccc; padding: 8px; }
+        th { background-color: #f9f9f9; }
+        a.button { padding: 6px 12px; background: red; color: white; text-decoration: none; border-radius: 4px; }
+        .nav { display: flex; justify-content: space-between; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <h1>Admin Dashboard</h1>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <h2>Contact Submissions</h2>
+    <a href="/download/contact">Download Contact Data</a>
+    <table>
+        <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Subject</th><th>Message</th><th>Delete</th></tr></thead>
+        <tbody>
+            {% for c in contacts %}
+            <tr>
+                <td>{{ c[0] }}</td><td>{{ c[1] }}</td><td>{{ c[2] }}</td><td>{{ c[3] }}</td><td>{{ c[4] }}</td>
+                <td><a class="button" href="/delete/contact/{{ c[0] }}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Booking Submissions</h2>
+    <a href="/download/booking">Download Booking Data</a>
+    <table>
+        <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Service</th><th>Location</th><th>Date</th><th>Message</th><th>Delete</th></tr></thead>
+        <tbody>
+            {% for b in bookings %}
+            <tr>
+                <td>{{ b[0] }}</td><td>{{ b[1] }}</td><td>{{ b[2] }}</td><td>{{ b[3] }}</td>
+                <td>{{ b[4] }}</td><td>{{ b[5] }}</td><td>{{ b[6] }}</td>
+                <td><a class="button" href="/delete/booking/{{ b[0] }}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+  </html>
